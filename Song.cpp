@@ -38,31 +38,52 @@ using namespace std;
     }
 
     bool Song::operator >(Song const &rhs){
-        vector<char> alphabet(26) = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z};
-        int letter1Index = 0;
-        int letter2Index = 0;
-        int counter = 0;
+        int size = 0;
         if(artist != rhs.artist) {
-            for (int i = 0; i < artist.length(); i++) {
-                //char by char
+            if(artist.length() < rhs.artist.length()) {
+                size = artist.length();
+            }
+            else{
+                size = rhs.artist.length();
+            }
+            for(int i = 0; i < size; i++) {
+                if (artist.at(i) > rhs.artist.at(i)) {
+                    return true;
+                } else if (artist.at(i) < rhs.artist.at(i)) {
+                    return false;
+                }
+            }
+            if(artist.length() != rhs.artist.length()){
+                if(artist.length() > rhs.artist.length()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
         }
-        else if(artist.length() < rhs.artist.length()){
-            return true;
-        }
-        else if(artist.length() > rhs.artist.length()){
-            return false;
-        }
-        if(title != rhs.title){
-            for(int i = 0; i < artist.length(); i++){
-                //char by char
+        if (title != rhs.title) {
+            if(title.length() < rhs.title.length()) {
+                size = title.length();
             }
-        }
-        else if(title.length() < rhs.title.length()){
-            return true;
-        }
-        else if(title.length() > rhs.title.length()){
-            return false;
+            else{
+                size = rhs.title.length();
+            }
+            for(int i = 0; i < size; i++) {
+                if (title.at(i) > rhs.title.at(i)) {
+                    return true;
+                } else if (title.at(i) < rhs.title.at(i)) {
+                    return false;
+                }
+            }
+            if(title.length() != rhs.title.length()){
+                if(title.length() > rhs.title.length()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
         }
         if(size > rhs.size){
             return true;
@@ -73,33 +94,54 @@ using namespace std;
     }
 
     bool Song::operator <(Song const &rhs){
-        vector<char> alphabet(26) = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z};
-        int letter1Index = 0;
-        int letter2Index = 0;
-        int counter = 0;
+        int size = 0;
         if(artist != rhs.artist) {
-            for (int i = 0; i < artist.length(); i++) {
-                //char by char
+            if(artist.length() < rhs.artist.length()) {
+                size = artist.length();
+            }
+            else{
+                size = rhs.artist.length();
+            }
+            for(int i = 0; i < size; i++) {
+                if (artist.at(i) < rhs.artist.at(i)) {
+                    return true;
+                } else if (artist.at(i) > rhs.artist.at(i)) {
+                    return false;
+                }
+            }
+            if(artist.length() != rhs.artist.length()){
+                if(artist.length() < rhs.artist.length()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
         }
-        else if(artist.length() < rhs.artist.length()){
-            return true;
-        }
-        else if(artist.length() > rhs.artist.length()){
-            return false;
-        }
-        if(title != rhs.title){
-            for(int i = 0; i < artist.length(); i++){
-                //char by char
+        if (title != rhs.title) {
+            if(title.length() < rhs.title.length()) {
+                size = title.length();
+            }
+            else{
+                size = rhs.title.length();
+            }
+            for(int i = 0; i < size; i++) {
+                if (title.at(i) < rhs.title.at(i)) {
+                    return true;
+                } else if (title.at(i) > rhs.title.at(i)) {
+                    return false;
+                }
+            }
+            if(title.length() != rhs.title.length()){
+                if(title.length() < rhs.title.length()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
         }
-        else if(title.length() < rhs.title.length()){
-            return true;
-        }
-        else if(title.length() > rhs.title.length()){
-            return false;
-        }
-        if(size > rhs.size){
+        if(size < rhs.size){
             return true;
         }
         else{
